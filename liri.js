@@ -13,14 +13,14 @@ var client = new Twitter(keys.twitter);
 inquirer.prompt([{
         type: "list",
         name: "doWhat",
-        message: "what do you want to do",
+        message: "Please select an option...",
         choices: ["my-tweets", "spotify-this-song", "movie-this"]
     },
 
     {
         type: "input",
         name: "songInput",
-        message: "Which song do you want to lookup?",
+        message: "Which song would you like to search?",
         when: function (answers) {
             return answers.doWhat === "spotify-this-song";
         }
@@ -29,7 +29,7 @@ inquirer.prompt([{
     {
         type: "input",
         name: "movieInput",
-        message: "Which movie would you like to lookup?",
+        message: "Which movie would you like to search?",
         when: function (answers) {
             return answers.doWhat === "movie-this";
         }
@@ -68,7 +68,7 @@ function getTweets() {
 
 function searchSong(song) {
     if (!song){
-        song = "The Sign %20 Ace of Base"
+        song = ""
     }
     spotify.search({
         type: 'track',
@@ -100,8 +100,8 @@ function getMovie(movie) {
             var year = JSON.parse(body).Year;
             var lang = JSON.parse(body).Language;
             var country = JSON.parse(body).Country;
-            var plot = JSON.parse(body).Plot
-            var actors = JSON.parse(body).Actors
+            var plot = JSON.parse(body).Plot;
+            var actors = JSON.parse(body).Actors;
             var imdb = JSON.parse(body).Ratings[0].Value;
             console.log(`\nTitle: ${title}`);
             console.log(`\nYear: ${year}`);
