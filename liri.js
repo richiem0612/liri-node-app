@@ -51,7 +51,7 @@ inquirer.prompt([{
 
 function getTweets() {
     var params = {
-        screen_name: "@MadrigalRichie",
+        screen_name: "@UNKNWN_DVLPR",
         count: 20
     };
     client.get('statuses/user_timeline', params, function (error, tweets, response) {
@@ -60,6 +60,7 @@ function getTweets() {
             for (var i = 0; i < tweets.length; i++) {
                 console.log("\nCreated at: " + tweets[i].created_at);
                 console.log("\nTweeted: " + tweets[i].text);
+                console.log("---------------------------------------")
 
             }
         }
